@@ -1,0 +1,17 @@
+h1 {
+    font-weight: lighter;
+    font-style: italic;
+}
+
+img {
+    width: 50%;
+    height: auto;
+}
+
+.dark {
+    color: white;
+    background-color: darkslateblue;
+}
+a {
+    color: lightgreen;
+}

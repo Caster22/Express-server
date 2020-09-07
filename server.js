@@ -1,12 +1,15 @@
 const express = require('express');
 const path = require('path');
 const hbs = require('express-handlebars');
+const Busboy = require('busboy');
 
 const app = express();
 app.engine('hbs', hbs());
 app.set('view engine', 'hbs');
 
 app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 app.get('/', (req, res) => {
     res.render('index');
@@ -22,6 +25,21 @@ app.get('/about', (req, res) => {
 
 app.get('/contact', (req, res) => {
     res.render('contact');
+});
+
+app.post('/contact/send-message', (req, res) => {
+
+    const { author, sender, title, message, design } = req.body;
+
+    if(author && sender && title && message && design) {
+        res.render('contact', { isSent: true, design: design });
+        console.log(author, sender, title, message, design);
+    }
+    else {
+        res.render('contact', { isError: true });
+        console.log(author, sender, title, message, design);
+    }
+
 });
 
 app.get('/info', (req, res) => {

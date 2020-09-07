@@ -6,6 +6,7 @@
   "author": "Michał Kopacz <kopaczmichal093@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "busboy": "^0.3.1",
     "express": "^4.17.1"
   },
   "devDependencies": {
